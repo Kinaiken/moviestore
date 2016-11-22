@@ -1,9 +1,12 @@
+@font-face { font-family: RobotoCondensed-Regular; src:url(../fonts/RobotoCondensed-Regular.ttf); }
+@font-face { font-family: Roboto-Regular; src:url(../fonts/Roboto-Regular.ttf); }
+
 h4, h5, h6,
 h1, h2, h3 {margin-top: 0;}
 ul, ol {margin: 0;}
 p {margin: 0;}
 html, body{
-	font-family: 'Roboto Condensed', sans-serif;
+	font-family: 'RobotoCondensed-Regular', 'Roboto-Regular', sans-serif;
 	background:#3f444e;
 }
 body a{
@@ -31,15 +34,6 @@ body a{
 .logo{
 	margin-top: 4px;
 }
-/* cyrillic-ext */
-@font-face {
-  font-family: 'Roboto Condensed';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Roboto Condensed Light'), local('RobotoCondensed-Light'), url(..//fonts/RobotoCondensed-Light.ttf2) format('ttf2');
-  unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
-}
-/*---social-icons-----*/
 .nav {
 	text-align:center;
 	
