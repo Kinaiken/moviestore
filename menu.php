@@ -1,22 +1,27 @@
 <?php
-$db=mysql_connect('us-cdbr-iron-east-04.cleardb.net','b1ad9fd1eb1578','5d896294');
-mysql_set_charset('utf8', $db);
-if(!$db)  {
-  die('Could not connect: '. mysql_error());
+$server = 'us-cdbr-iron-east-04.cleardb.net';
+$my_user = 'b1ad9fd1eb1578';
+$my_db = "heroku_4d723b66bdd7d40";
+$pass = "5d896294";
+$con = new mysqli($server, $my_user, $pass, $my_db);
+mysqli_set_charset($con, "utf8");
+if ($con->connect_error) {
+	die("Connection failed: " . $con->connect_error);
 }
-mysql_select_db("heroku_4d723b66bdd7d40", $db);	
 session_start();
 error_reporting(0);
 $f_name="нэвтрэх";
 $pr_img="p1.jpg";
 if($_SESSION['user-id']!=NULL) {
-	$query=mysql_query("SELECT * FROM `_User` WHERE userId='".$_SESSION['user-id']."'");
-	while ($row = mysql_fetch_assoc($query)) {
-		$f_name=$row["firstname"];
-		if($row["profileImg"]!=NULL) {
-			$pr_img=$row["profileImg"];	
+	$query="SELECT * FROM `_User` WHERE userId='".$_SESSION['user-id']."'";
+	if($result = $con->query($query)) {
+		while ($row = $result->fetch_row()) {
+			$f_name=$row[2];
+			if($row[9]!=NULL) {
+				$pr_img=$row[9];	
+			}
 		}
-	}
+	}	
 }
 ?>
 <div class="header_top">

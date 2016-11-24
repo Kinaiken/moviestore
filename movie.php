@@ -43,18 +43,24 @@
 						<div class="blog-pagenat-wthree">
 							<ul>
 								<?php 
-									$db=mysql_connect('us-cdbr-iron-east-04.cleardb.net','b1ad9fd1eb1578','5d896294');
-									mysql_set_charset('utf8', $db);
-									if(!$db)  {
-									  die('Could not connect: '. mysql_error());
+									$server = 'us-cdbr-iron-east-04.cleardb.net';
+									$my_user = 'b1ad9fd1eb1578';
+									$my_db = "heroku_4d723b66bdd7d40";
+									$pass = "5d896294";
+									$con = new mysqli($server, $my_user, $pass, $my_db);
+									mysqli_set_charset($con, "utf8");
+									if ($con->connect_error) {
+										die("Connection failed: " . $con->connect_error);
 									}
-									mysql_select_db("heroku_4d723b66bdd7d40", $db);	
 									session_start();
 									error_reporting(0);
 									
-									$query = mysql_query("SELECT COUNT(*) as num FROM `_Movies` WHERE imgSmallUrl IS NOT NULL");
-									$row = mysql_fetch_assoc($query);
-									$movieCnt = $row["num"];
+									$query = "SELECT COUNT(*) FROM `_Movies` WHERE imgSmallUrl IS NOT NULL";
+									if($result = $con->query($query)) {
+										while($row = $result->fetch_row()) {
+											$movieCnt = $row[0];		
+										}
+									}
 									$page = 1;
 									$j = 0;
 								?>
@@ -116,7 +122,7 @@
                       <div class="clearfix"> </div>
                   </div>
                   <h1 class="recent">Сүүлд нэмэгдсэн кинонууд</h3>
-                   <ul id="flexiselDemo3">
+					<ul id="flexiselDemo3">
 						<li><img src="images/1.jpg" class="img-responsive"/><div class="grid-flex"><a href="#">Syenergy 2mm</a><p>22.10.2014 | 14:40</p></div></li>
 						<li><img src="images/2.jpg" class="img-responsive"/><div class="grid-flex"><a href="#">Surf Yoke</a><p>22.01.2015 | 14:40</p></div></li>
 						<li><img src="images/3.jpg" class="img-responsive"/><div class="grid-flex"><a href="#">Salty Daiz</a><p>22.10.2013 | 14:40</p></div></li>

@@ -12,25 +12,29 @@
 							if (isset($_GET['q'])) {
 							  $movieId  = $_GET['q'];
 							}
-							$db=mysql_connect('us-cdbr-iron-east-04.cleardb.net','b1ad9fd1eb1578','5d896294');
-							mysql_set_charset('utf8', $db);
-							if(!$db)  {
-							  die('Could not connect: '. mysql_error());
+							$server = 'us-cdbr-iron-east-04.cleardb.net';
+							$my_user = 'b1ad9fd1eb1578';
+							$my_db = "heroku_4d723b66bdd7d40";
+							$pass = "5d896294";
+							$con = new mysqli($server, $my_user, $pass, $my_db);
+							mysqli_set_charset($con, "utf8");
+							if ($con->connect_error) {
+								die("Connection failed: " . $con->connect_error);
 							}
-							mysql_select_db("heroku_4d723b66bdd7d40", $db);	
 							session_start();
 							error_reporting(0);
 							
-							$query = mysql_query("SELECT * FROM `_Movies` WHERE movieId = '". $movieId ."'");
-							$row = mysql_fetch_assoc($query);
+							$query = "SELECT * FROM `_Movies` WHERE movieId = '". $movieId ."'";
+							$result = $con->query($query);
+							$row = $result->fetch_row();							
 						}
 					?>
-					<center><h2><?php echo $row["title"]; ?></h2></center></br>
+					<center><h2><?php echo $row[1]; ?></h2></center></br>
 					<div class="grid images_3_of_2">
 						<div class="movie_image">
 							<span class="movie_rating">5.0</span>
 							<div class="poster-light"></div>
-							<img src="<?php echo "images/". $row["singleImgUrl"]; ?>" class="img-responsive" alt=""/>
+							<img src="<?php echo "images/". $row[16]; ?>" class="img-responsive" alt=""/>
 						</div>
 						<div class="movie_rate">
 							<div class="rating_desc"><p>Таны үнэлгээ :</p></div>
@@ -58,7 +62,7 @@
 					<div class="desc1 span_3_of_2">
 						<p class="movie_option"><strong>Улс: </strong><a href="#">Монгол</a></p>
 						<p class="movie_option"><strong>Төрөл: </strong><a href="#">Адал явдал</a>, <a href="#">Инээдэм</a></p>
-						<p class="movie_option"><strong>Гарсан он: </strong><?php echo $row["yearOfRelease"]; ?></p>
+						<p class="movie_option"><strong>Гарсан он: </strong><?php echo $row[4]; ?></p>
 						<p class="movie_option"><strong>Найруулагч: </strong><a href="#">Балжиннямын Амарсайхан</a></p>
 						<p class="movie_option"><strong>Жүжигчид: </strong><a href="#">Балжиннямын Амарсайхан</a>, <a href="#">Мондооны Мягмар</a>, <a href="#">Батцэнгэлийн Тэмүүлэн</a>, <a href="#">Цэгмидийн Төмөрхуяг</a>, <a href="#">С.Батзориг</a> <a href="#">...</a></p>
 						<p class="movie_option"><strong>Насны хязгаар: </strong>6+</p> 
@@ -66,9 +70,9 @@
 						<div class="down_btn"><a class="btn1" href="#"><span> </span>Шууд үзэх</a></div>
 					 </div>
 					<div class="clearfix"> </div>
-					<p class="m_4"><?php echo $row["description"]; ?></p>
+					<p class="m_4"><?php echo $row[9]; ?></p>
 	   
-					<iframe class="trailer" src="<?php echo "https://www.youtube.com/embed/" . $row["trailerUrl"]; ?>" allowfullscreen></iframe>
+					<iframe class="trailer" src="<?php echo "https://www.youtube.com/embed/" . $row[7]; ?>" allowfullscreen></iframe>
 					
 				</div>
                       <div class="col-md-3">

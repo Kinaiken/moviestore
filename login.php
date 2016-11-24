@@ -1,9 +1,13 @@
 <?php include('header.php'); 
-$db=mysql_connect('us-cdbr-iron-east-04.cleardb.net','b1ad9fd1eb1578','5d896294');
-if(!$db)  {
-  die('Could not connect: '. mysql_error());
-}
-mysql_select_db("heroku_4d723b66bdd7d40", $db);
+$server = 'us-cdbr-iron-east-04.cleardb.net';
+$my_user = 'b1ad9fd1eb1578';
+$my_db = "heroku_4d723b66bdd7d40";
+$pass = "5d896294";
+$con = new mysqli($server, $my_user, $pass, $my_db);
+mysqli_set_charset($con, "utf8");
+if ($con->connect_error) {
+	die("Connection failed: " . $con->connect_error);
+}						
 session_start();
 error_reporting(0);
 $_SESSION['user-id']=NULL;
@@ -38,8 +42,10 @@ $_SESSION['user-id']=NULL;
 			    	if($_POST['login']) {
 	        			$username=$_POST['username'];
 			    		$password=$_POST['password'];
-			          	$query=mysql_query("SELECT * FROM `_User` WHERE username='".$username."' AND password='".$password."'");
-				        $_SESSION['user-id']=mysql_fetch_assoc($query)['userId'];			
+			          	$query="SELECT * FROM `_User` WHERE username='".$username."' AND password='".$password."'";
+						$result = $con->query($query);
+						$row = $result->fetch_row();	
+				        $_SESSION['user-id']=$row[0];			
 				        if ($_SESSION['user-id']!=NULL) { 
 				        	header('location:/moviestore/index.php'); 
 				    	}

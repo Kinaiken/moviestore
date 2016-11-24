@@ -1,10 +1,13 @@
 <?php include('header.php'); 
-$db=mysql_connect('us-cdbr-iron-east-04.cleardb.net','b1ad9fd1eb1578','5d896294');
-mysql_set_charset('utf8', $db);
-if(!$db)  {
-  die('Could not connect: '. mysql_error());
-}
-mysql_select_db("heroku_4d723b66bdd7d40", $db);	
+$server = 'us-cdbr-iron-east-04.cleardb.net';
+$my_user = 'b1ad9fd1eb1578';
+$my_db = "heroku_4d723b66bdd7d40";
+$pass = "5d896294";
+$con = new mysqli($server, $my_user, $pass, $my_db);
+mysqli_set_charset($con, "utf8");
+if ($con->connect_error) {
+	die("Connection failed: " . $con->connect_error);
+}	
 ob_start();
 session_start();
 error_reporting(0);
@@ -84,39 +87,41 @@ error_reporting(0);
 			<script src="js/owl.carousel.js"></script>
 			<div id="owl-demo" class="owl-carousel owl-theme">
 		<?php 
-				$query=mysql_query("SELECT t2.movieId, t2.title, year(t2.yearOfRelease) as year, t2.rating, t2.imgUrl FROM `_recommendedmovies` AS t1 INNER JOIN `_movies` AS t2 ON t1.movieId=t2.movieId WHERE t1.userId='".$userid."'");	
-				while ($row = mysql_fetch_assoc($query)) {
+				$query="SELECT t2.movieId, t2.title, year(t2.yearOfRelease) as year, t2.rating, t2.imgUrl FROM `_recommendedmovies` AS t1 INNER JOIN `_movies` AS t2 ON t1.movieId=t2.movieId WHERE t1.userId='".$userid."'";
+				if($result = $con->query($query)) {
+					while($row = $result->fetch_row()) {
 		?>
-					<div class="item">
-						<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
-							<a href="<?php echo "single.php?q=". $row["movieId"]; ?>" class="hvr-shutter-out-horizontal"><img src="<?php echo "images/" .$row["imgUrl"]; ?>" title="album-name" class="img-responsive" alt=" " />
-								<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
-							</a>
-							<div class="mid-1 agileits_w3layouts_mid_1_home">
-								<div class="w3l-movie-text">
-									<h6><a href="single.php"><?php echo $row["title"] ?></a></h6>							
-								</div>
-								<div class="mid-2 agile_mid_2_home">
-									<p><?php echo $row["year"] ?></p>
-									<div class="block-stars">
-										<ul class="w3l-ratings">
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-										</ul>
+						<div class="item">
+							<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
+								<a href="<?php echo "single.php?q=". $row[0]; ?>" class="hvr-shutter-out-horizontal"><img src="<?php echo "images/" .$row[4]; ?>" title="album-name" class="img-responsive" alt=" " />
+									<div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+								</a>
+								<div class="mid-1 agileits_w3layouts_mid_1_home">
+									<div class="w3l-movie-text">
+										<h6><a href="single.php"><?php echo $row[1] ?></a></h6>							
 									</div>
-									<div class="clearfix"></div>
+									<div class="mid-2 agile_mid_2_home">
+										<p><?php echo $row[2] ?></p>
+										<div class="block-stars">
+											<ul class="w3l-ratings">
+												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+											</ul>
+										</div>
+										<div class="clearfix"></div>
+									</div>
 								</div>
-							</div>
-							<div class="ribben">
-								<p>ШИНЭ</p>
+								<div class="ribben">
+									<p>ШИНЭ</p>
+								</div>
 							</div>
 						</div>
-					</div>
 		<?php 
-				} 
+					}
+				}				
 		?>
 			</div>
 		</div>
