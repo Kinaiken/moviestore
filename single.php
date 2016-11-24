@@ -66,8 +66,7 @@
 						<p class="movie_option"><strong>Найруулагч: </strong><a href="#">Балжиннямын Амарсайхан</a></p>
 						<p class="movie_option"><strong>Жүжигчид: </strong><a href="#">Балжиннямын Амарсайхан</a>, <a href="#">Мондооны Мягмар</a>, <a href="#">Батцэнгэлийн Тэмүүлэн</a>, <a href="#">Цэгмидийн Төмөрхуяг</a>, <a href="#">С.Батзориг</a> <a href="#">...</a></p>
 						<p class="movie_option"><strong>Насны хязгаар: </strong>6+</p> 
-						<div class="down_btn"><a class="btn1" href="#"><span> </span>Татах&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-						<div class="down_btn"><a class="btn1" href="#"><span> </span>Шууд үзэх</a></div>
+						<div class="down_btn"><a class="btn1" href="http://arigun.info/news/aimshigeeee/2015-12-16-640" target="_blank"><span> </span>Шууд үзэх</a></div>
 					 </div>
 					<div class="clearfix"> </div>
 					<p class="m_4"><?php echo $row[9]; ?></p>

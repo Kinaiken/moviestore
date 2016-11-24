@@ -32,17 +32,17 @@ error_reporting(0);
 	      <ul class="rslides" id="slider">
 	        <li><img src="images/banner1.jpg" class="img-responsive" alt=""/>
 	        	<div class="button">
-			      <a href="#" class="hvr-shutter-out-horizontal">Шууд үзэх</a>
+			      <a href="single.php?q=52" class="hvr-shutter-out-horizontal">Шууд үзэх</a>
 			    </div>
 			</li>
 	        <li><img src="images/banner2.jpg" class="img-responsive" alt=""/>
 	        	<div class="button">
-			      <a href="#" class="hvr-shutter-out-horizontal">Шууд үзэх</a>
+			      <a href="single.php?q=282" class="hvr-shutter-out-horizontal">Шууд үзэх</a>
 			    </div>
 			</li>
 	        <li><img src="images/banner3.jpg" class="img-responsive" alt=""/>
 	        	<div class="button">
-			      <a href="#" class="hvr-shutter-out-horizontal">Шууд үзэх</a>
+			      <a href="single.php?q=92" class="hvr-shutter-out-horizontal">Шууд үзэх</a>
 			    </div>
 			</li>
 	      </ul>
@@ -136,7 +136,8 @@ error_reporting(0);
 		<div class="box_4">
 			<div class="col-md-5 grid_3">
 			  <div class="row_1">
-			  <div class="col-md-6 grid_4"><a href="single.php?q=102">
+			  <div class="col-md-6 grid_4">
+				<a href="single.php?q=102">
 				  <div class="grid_2">
 					<img src="images/pic1.jpg" class="img-responsive" alt=""/>
 					<div class="caption1">
@@ -147,6 +148,8 @@ error_reporting(0);
 				    	<p class="m_3">Найз</p>
 					</div>
 				   </div>
+				</a>
+				<a href="single.php?q=112">
 				   <div class="grid_2 col_1">
 					<img src="images/pic2.jpg" class="img-responsive" alt=""/>
 					<div class="caption1">
@@ -157,7 +160,8 @@ error_reporting(0);
 				    	<p class="m_3">Хөгжилтэй гэр бүл</p>
 					</div>
 				   </div>
-			   </a></div>
+			   </a>
+			   </div>
 			   <div class="col-md-6 grid_7">
 				   <div class="col_2">
 				   	    <ul class="list_4">

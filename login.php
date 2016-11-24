@@ -41,7 +41,7 @@ $_SESSION['user-id']=NULL;
 				<?php
 			    	if($_POST['login']) {
 	        			$username=$_POST['username'];
-			    		$password=$_POST['password'];
+			    		$password=md5(md5($_POST['password']));
 			          	$query="SELECT * FROM `_User` WHERE username='".$username."' AND password='".$password."'";
 						$result = $con->query($query);
 						$row = $result->fetch_row();	

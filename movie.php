@@ -123,11 +123,14 @@
                   </div>
                   <h1 class="recent">Сүүлд нэмэгдсэн кинонууд</h3>
 					<ul id="flexiselDemo3">
-						<li><img src="images/1.jpg" class="img-responsive"/><div class="grid-flex"><a href="#">Syenergy 2mm</a><p>22.10.2014 | 14:40</p></div></li>
-						<li><img src="images/2.jpg" class="img-responsive"/><div class="grid-flex"><a href="#">Surf Yoke</a><p>22.01.2015 | 14:40</p></div></li>
-						<li><img src="images/3.jpg" class="img-responsive"/><div class="grid-flex"><a href="#">Salty Daiz</a><p>22.10.2013 | 14:40</p></div></li>
-						<li><img src="images/4.jpg" class="img-responsive"/><div class="grid-flex"><a href="#">Cheeky Zane</a><p>22.10.2014 | 14:40</p></div></li>
-						<li><img src="images/5.jpg" class="img-responsive"/><div class="grid-flex"><a href="#">Synergy</a><p>22.10.2013 | 14:40</p></div></li>
+						<?php 
+							$query = "SELECT * FROM _Movies WHERE imgSmallUrl IS NOT NULL ORDER BY yearOfRelease DESC LIMIT 0, 5";
+							if($result = $con->query($query)) {
+								while($row = $result->fetch_row()) {
+									echo "<li><img src='images/". $row[15] ."' class='img-responsive'/><div class='grid-flex'><a href='single.php?q=". $row[0] ."'>". $row[1] ."</a><p>". $row[4] ." | ". $row[3] ." мин</p></div></li>";
+								}
+							}
+						?>
 				    </ul>
 				    <script type="text/javascript">
 					 $(window).load(function() {
@@ -158,11 +161,14 @@
 				   </script>
 				   <script type="text/javascript" src="js/jquery.flexisel.js"></script>
 				   <ul id="flexiselDemo1">
-						<li><img src="images/8.jpg" class="img-responsive"/><div class="grid-flex"><a href="#">Syenergy 2mm</a><p>22.10.2014 | 14:40</p></div></li>
-						<li><img src="images/7.jpg" class="img-responsive"/><div class="grid-flex"><a href="#">Surf Yoke</a><p>22.01.2015 | 14:40</p></div></li>
-						<li><img src="images/6.jpg" class="img-responsive"/><div class="grid-flex"><a href="#">Salty Daiz</a><p>22.10.2013 | 14:40</p></div></li>
-						<li><img src="images/1.jpg" class="img-responsive"/><div class="grid-flex"><a href="#">Cheeky Zane</a><p>22.10.2014 | 14:40</p></div></li>
-						<li><img src="images/2.jpg" class="img-responsive"/><div class="grid-flex"><a href="#">Synergy</a><p>22.10.2013 | 14:40</p></div></li>
+						<?php 
+							$query = "SELECT * FROM _Movies WHERE imgSmallUrl IS NOT NULL ORDER BY yearOfRelease DESC LIMIT 5, 5";
+							if($result = $con->query($query)) {
+								while($row = $result->fetch_row()) {
+									echo "<li><img src='images/". $row[15] ."' class='img-responsive'/><div class='grid-flex'><a href='single.php?q=". $row[0] ."'>". $row[1] ."</a><p>". $row[4] ." | ". $row[3] ." мин</p></div></li>";
+								}
+							}
+						?>
 				     </ul>
 				    <script type="text/javascript">
 					 $(window).load(function() {

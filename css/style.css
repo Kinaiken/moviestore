@@ -163,7 +163,6 @@ ul.header_right_box{
 	padding:0;
 	margin: 0 0 0 33%;
 	list-style:none;
-	
 }
 ul.header_right_box li{
 	float: left;
@@ -525,6 +524,8 @@ hvr-shutter-out-horizontal:before {
 .blog-pagenat-wthree ul li {
     display: inline-block;
     list-style: none;
+	margin-left: 3px;
+	margin-right: 3px;
 }
 .blog-pagenat-wthree ul li a {
     display: block;
@@ -1374,6 +1375,7 @@ p.m_4{
 	font-size: 1em;
 	line-height: 1.8em;
 	margin:3em 0;
+	text-align: justify;
 }
 ul.single_list {
 	margin-bottom: 30px;
@@ -1502,6 +1504,10 @@ li.last-comment {
 	-o-transition: 0.5s all;
 	display: inline-block;
 	text-transform: uppercase;
+}
+.register a {
+	text-decoration:none;
+	color:#fff;	
 }
 .acount-btn:hover, .login-right input[type="submit"]:hover {
 	background:#3f444e;
@@ -1654,7 +1660,7 @@ p.cart {
 .register-but{
 	
 }
-.register-but form input[type="submit"] {
+.register-but input[type="submit"] {
 	background: #df1f26;
 	color: #FFF;
 	font-size: 1em;
