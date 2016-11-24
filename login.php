@@ -47,8 +47,9 @@ $_SESSION['user-id']=NULL;
 						$row = $result->fetch_row();	
 				        $_SESSION['user-id']=$row[0];			
 				        if ($_SESSION['user-id']!=NULL) { 
-							$parent = dirname($_SERVER['REQUEST_URI']);
-							header("Location: $parent/index.php");
+							$parent = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+							$url = "Location: " .substr($parent, 0, strrpos($parent, '/')) ."/index.php";
+							header($url);
 				    	}
 	                    else {
 		       	?>
