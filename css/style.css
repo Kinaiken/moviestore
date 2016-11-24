@@ -1123,6 +1123,7 @@ a.movie__title{
 	color:#000;
 	font-weight:600;
 	font-size:1.1em;
+	white-space:nowrap;
 }
 .movie-test-right .movie__images {
 	float: right;

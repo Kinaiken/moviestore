@@ -1,5 +1,36 @@
-<?php include('header.php'); ?>
-<body>
+<?php include('header.php'); ?> 
+ <script>
+	var index;
+	function loadXMLDoc(i) {
+		index = i;
+		var xmlhttp;
+		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		}
+		else {// code for IE6, IE5
+		  xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange = function() {
+		  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById("movie").innerHTML = xmlhttp.responseText;
+		  }
+		}
+		xmlhttp.open("GET", "ajax.php?q=" + i, true);
+		xmlhttp.send();
+	}
+	function next() {
+		if(index < 3) {
+			loadXMLDoc(index + 1);
+		}
+	}
+	function previous() {
+		if(index - 1 > 0) {
+			loadXMLDoc(index - 1);
+		}
+	}
+</script>
+	
+<body onload="loadXMLDoc(1)">
 <div class="container">
 	<div class="container_wrap">
 		<?php include('menu.php') ?>
@@ -7,175 +38,46 @@
 	   	   <h2 class="m_3">Бүх кинонууд</h1>
       	       <div class="movie_top">
       	         <div class="col-md-9 movie_box">
-                        <!-- Movie variant with time -->
-                            <div class="movie movie-test movie-test-dark movie-test-left">
-                                <div class="movie__images">
-                                    <a href="single.php" class="movie-beta__link">
-                                        <img alt="" src="images/1.jpg" class="img-responsive" alt=""/>
-                                    </a>
-                                </div>
-								<div class="movie__info">
-                                    <a href="single.php" class="movie__title">Найз (2015)  </a>
-                                    <p class="movie__time">80 мин</p>
-									<p class="movie__option"><a href="single.php">Contray</a> | <a href="single.php">Dolor sit</a> | <a href="single.php">Drama</a></p>
-                                    <ul class="list_6">
-						    			<li><i class="icon1"> </i><p>2,548</p></li>
-						    			<li><i class="icon3"> </i><p>546</p></li>
-						    			<li>Үнэлгээ : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
-						    			<div class="clearfix"> </div>
-						    		</ul>
-                                 </div>
-                                <div class="clearfix"> </div>
-                            </div>
-                         <!-- Movie variant with time -->
-						<!-- Movie variant with time -->
-                            <div class="movie movie-test movie-test-dark movie-test-left">
-                                <div class="movie__images">
-                                    <a href="single.php" class="movie-beta__link">
-                                        <img alt="" src="images/2.jpg" class="img-responsive" alt=""/>
-                                    </a>
-                                </div>
-                                <div class="movie__info">
-                                    <a href="single.php" class="movie__title">Ipsum (2015)  </a>
-                                    <p class="movie__time">80 min</p>
-									<p class="movie__option"><a href="single.php">Contray</a> | <a href="single.php">Dolor sit</a> | <a href="single.php">Drama</a></p>
-                                    <ul class="list_6">
-						    			<li><i class="icon1"> </i><p>2,548</p></li>
-						    			<li><i class="icon3"> </i><p>546</p></li>
-						    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
-						    			<div class="clearfix"> </div>
-			    					</ul>
-                                 </div>
-                                <div class="clearfix"> </div>
-                            </div>
-                            <div class="movie movie-test movie-test-light movie-test-right">
-                               <div class="movie__images">
-                                    <a href="single.php" class="movie-beta__link">
-                                        <img alt="" src="images/3.jpg" class="img-responsive" alt=""/>
-                                    </a>
-                                </div>
-                                <div class="movie__info">
-                                    <a href="single.php" class="movie__title">Ipsum (2015)  </a>
-                                    <p class="movie__time">80 min</p>
-									<p class="movie__option"><a href="single.php">Contray</a> | <a href="single.php">Dolor sit</a> | <a href="single.php">Drama</a></p>
-                                    <ul class="list_6">
-						    			<li><i class="icon1"> </i><p>2,548</p></li>
-						    			<li><i class="icon3"> </i><p>546</p></li>
-						    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
-						    			<div class="clearfix"> </div>
-			    					</ul>
-                                 </div>
-                                 <div class="clearfix"> </div>
-                            </div>
-                            <div class="movie movie-test movie-test-light movie-test-right">
-                               <div class="movie__images">
-                                    <a href="single.php" class="movie-beta__link">
-                                        <img alt="" src="images/4.jpg" class="img-responsive" alt=""/>
-                                    </a>
-                                </div>
-                                <div class="movie__info">
-                                    <a href="single.php" class="movie__title">Ipsum (2015)  </a>
-                                    <p class="movie__time">80 min</p>
-									<p class="movie__option"><a href="single.php">Contray</a> | <a href="single.php">Dolor sit</a> | <a href="single.php">Drama</a></p>
-                                    <ul class="list_6">
-						    			<li><i class="icon1"> </i><p>2,548</p></li>
-						    			<li><i class="icon3"> </i><p>546</p></li>
-						    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
-						    			<div class="clearfix"> </div>
-			    					</ul>
-                                 </div>
-                                 <div class="clearfix"> </div>
-                            </div>
-                            <div class="movie movie-test movie-test-dark movie-test-left">
-                                <div class="movie__images">
-                                    <a href="single.php" class="movie-beta__link">
-                                        <img alt="" src="images/5.jpg" class="img-responsive" alt=""/>
-                                    </a>
-                                </div>
-								<div class="movie__info">
-                                    <a href="single.php" class="movie__title">Ipsum (2015)  </a>
-                                    <p class="movie__time">80 min</p>
-									<p class="movie__option"><a href="single.php">Contray</a> | <a href="single.php">Dolor sit</a> | <a href="single.php">Drama</a></p>
-                                    <ul class="list_6">
-						    			<li><i class="icon1"> </i><p>2,548</p></li>
-						    			<li><i class="icon3"> </i><p>546</p></li>
-						    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
-						    			<div class="clearfix"> </div>
-						    		</ul>
-                                 </div>
-                                <div class="clearfix"> </div>
-                            </div>
-                            <div class="movie movie-test movie-test-dark movie-test-left">
-                                <div class="movie__images">
-                                    <a href="single.php" class="movie-beta__link">
-                                        <img alt="" src="images/6.jpg" class="img-responsive" alt=""/>
-                                    </a>
-                                </div>
-								<div class="movie__info">
-                                    <a href="single.php" class="movie__title">Ipsum (2015)  </a>
-                                    <p class="movie__time">80 min</p>
-									<p class="movie__option"><a href="single.php">Contray</a> | <a href="single.php">Dolor sit</a> | <a href="single.php">Drama</a></p>
-                                    <ul class="list_6">
-						    			<li><i class="icon1"> </i><p>2,548</p></li>
-						    			<li><i class="icon3"> </i><p>546</p></li>
-						    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
-						    			<div class="clearfix"> </div>
-						    		</ul>
-                                 </div>
-                                <div class="clearfix"> </div>
-                            </div>
-                            <div class="movie movie-test movie-test-light movie-test-right">
-                               <div class="movie__images">
-                                    <a href="single.php" class="movie-beta__link">
-                                        <img alt="" src="images/7.jpg" class="img-responsive" alt=""/>
-                                    </a>
-                                </div>
-                                <div class="movie__info">
-                                    <a href="#" class="movie__title">Ipsum (2015)  </a>
-                                    <p class="movie__time">80 min</p>
-									<p class="movie__option"><a href="single.php">Contray</a> | <a href="single.php">Dolor sit</a> | <a href="single.php">Drama</a></p>
-                                    <ul class="list_6">
-						    			<li><i class="icon1"> </i><p>2,548</p></li>
-						    			<li><i class="icon3"> </i><p>546</p></li>
-						    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
-						    			<div class="clearfix"> </div>
-			    					</ul>
-                                 </div>
-                                 <div class="clearfix"> </div>
-                            </div>
-                            <div class="movie movie-test movie-test-light movie-test-right">
-                               <div class="movie__images">
-                                    <a href="single.php" class="movie-beta__link">
-                                        <img alt="" src="images/8.jpg" class="img-responsive" alt=""/>
-                                    </a>
-                                </div>
-                                <div class="movie__info">
-                                    <a href="single.php" class="movie__title">Ipsum (2015)  </a>
-                                    <p class="movie__time">80 min</p>
-									<p class="movie__option"><a href="single.php">Contray</a> | <a href="single.php">Dolor sit</a> | <a href="single.php">Drama</a></p>
-                                    <ul class="list_6">
-						    			<li><i class="icon1"> </i><p>2,548</p></li>
-						    			<li><i class="icon3"> </i><p>546</p></li>
-						    			<li>Rating : &nbsp;&nbsp;<p><img src="images/rating1.png" alt=""></p></li>
-						    			<div class="clearfix"> </div>
-			    					</ul>
-                                 </div>
-                                 <div class="clearfix"> </div>
-                            </div>   
-							<div class="col-md-12">
-								<div class="blog-pagenat-wthree">
-									<ul>
-										<li><a class="first" href="#">Өмнөх</a></li>
-										<li><a class="active" href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a class="last" href="#">Дараах</a></li>
-									</ul>
-								</div>
-							</div>
-                            <div class="clearfix"> </div>                         
+					<div id="movie"></div>
+					<div class="col-md-12">
+						<div class="blog-pagenat-wthree">
+							<ul>
+								<?php 
+									$db=mysql_connect('us-cdbr-iron-east-04.cleardb.net','b1ad9fd1eb1578','5d896294');
+									mysql_set_charset('utf8', $db);
+									if(!$db)  {
+									  die('Could not connect: '. mysql_error());
+									}
+									mysql_select_db("heroku_4d723b66bdd7d40", $db);	
+									session_start();
+									error_reporting(0);
+									
+									$query = mysql_query("SELECT COUNT(*) as num FROM `_Movies` WHERE imgSmallUrl IS NOT NULL");
+									$row = mysql_fetch_assoc($query);
+									$movieCnt = $row["num"];
+									$page = 1;
+									$j = 0;
+								?>
+								<li><a class="first" href="#" onClick='previous()'>Өмнөх</a></li>
+								<?php
+									while($j < $movieCnt) {
+										$j += 8;
+										paginationButtons($j / 8, $page);
+									}
+									function paginationButtons($i, $page) {
+										if($i == $page) {
+										  echo "<li><a class='active' href='#' onClick = 'loadXMLDoc(". $i .")' >". $i ."</a></li>";
+										}
+										else {
+										  echo "<li><a href='#' onClick = 'loadXMLDoc(". $i .")' >". $i ."</a></li>";
+										}
+									}
+								?>
+								<li><a class="last" href="#" onClick='next()'>Дараах</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="clearfix"> </div>                         
                          <!-- Movie variant with time -->
                       </div>
                       <div class="col-md-3">
