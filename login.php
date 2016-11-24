@@ -47,7 +47,8 @@ $_SESSION['user-id']=NULL;
 						$row = $result->fetch_row();	
 				        $_SESSION['user-id']=$row[0];			
 				        if ($_SESSION['user-id']!=NULL) { 
-				        	header('location:/moviestore/index.php'); 
+							$parent = dirname($_SERVER['REQUEST_URI']);
+							header("Location: $parent/index.php");
 				    	}
 	                    else {
 		       	?>
